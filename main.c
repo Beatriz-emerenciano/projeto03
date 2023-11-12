@@ -51,11 +51,7 @@ int main() {
                 salvarArquivo(pessoaTarefa,numLidas);
                 break;
 
-            case 0:
-
-                printf("Programa encerrado!\n");
-
-                break;
+          
           case 4:
             printf("Digite o numero da que deseja editar: \n");
             int editar;
@@ -63,6 +59,20 @@ int main() {
             editarTarefa(pessoaTarefa,numLidas,editar - 1);
             salvarArquivo(pessoaTarefa, numLidas);
            break;
+
+          case 5:
+          printf("Listar por prioridade: \n");
+          int fPrioridade;
+          printf("Digite a listagem das prioridades desejada: ");
+          scanf("%d", &fPrioridade);
+          prioridade(pessoaTarefa,numLidas,fPrioridade);
+          break;
+
+          case 0:
+
+          printf("Programa encerrado!\n");
+
+          break;
           
             default:
                 printf("erro! \n");
