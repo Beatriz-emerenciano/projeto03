@@ -36,7 +36,7 @@ int main() {
 
             case 2:
                 //chamar a funcao para carregar as tarefas antes de listar
-                if(carregarArquivo(pessoaTarefa,&numLidas));
+                if(carregarArquivo(pessoaTarefa,&numLidas))
 
                 // lista as tarefas apenas se foram carregadas com sucesso
                 listarStruct(pessoaTarefa,numLidas); // salva as tarefas após adicionar uma nova
@@ -44,7 +44,7 @@ int main() {
 
             case 3:
                 //chamar a funcao excluir
-                printf("Excluir: \n");
+                printf("Digite o numero da tarefa que deseja excluir: \n");
                 int cDeletar;
                 scanf("%d",&cDeletar);
                 excluir(pessoaTarefa,&numLidas,cDeletar);
@@ -56,6 +56,14 @@ int main() {
                 printf("Programa encerrado!\n");
 
                 break;
+          case 4:
+            printf("Digite o numero da que deseja editar: \n");
+            int editar;
+            scanf("%d",&editar);
+            editarTarefa(pessoaTarefa,numLidas,editar - 1);
+            salvarArquivo(pessoaTarefa, numLidas);
+           break;
+          
             default:
                 printf("erro! \n");
         }
@@ -65,41 +73,3 @@ int main() {
     return 0;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
