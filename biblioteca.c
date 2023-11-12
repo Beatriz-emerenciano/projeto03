@@ -157,3 +157,33 @@ void editarTarefa(Tarefa *tarefa,int numTarefas, int indice){
     
 }
 
+
+/* a função*/
+
+void prioridade(const Tarefa *tarefa,int numTarefa, int prioridade){
+  int achadas = 0;
+  printf("Tarefas com prioridade %d: \n",prioridade);
+
+  for(int i = 0; i < numTarefa; i++){
+    if(tarefa[i].prioridade == prioridade){
+      printf("Prioridade: %d\n", tarefa[i].prioridade);
+      printf("Prioridade: %s\n", tarefa[i].descricao);
+      printf("Prioridade: %s\n", tarefa[i].categoria);
+      printf("Prioridade: %s\n", tarefa[i].estado);
+      printf("---------------------------\n");
+      achadas++;
+      
+    }
+  }
+
+  if(achadas == 0){
+    printf("Nenhuma tarefa encontrada com prioridade %d.\n",prioridade);
+  }
+}
+
+
+
+
+
+
+
