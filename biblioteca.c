@@ -15,6 +15,8 @@ void menu() {
   printf("2- Listar \n");
   printf("3- Excluir \n");
   printf("4- Editar tarefa\n");
+  printf("5- filtrar por prioridade\n");
+  printf("6- filtrar por estado\n");
   printf("0- Sair\n");
   printf("Digite:\n ");
 }
@@ -68,7 +70,7 @@ void listarStruct(const Tarefa *tarefas, int numTarefas) {
       printf("Prioridade: %d\n", tarefas[indice].prioridade);
       printf("Descricao: %s\n", tarefas[indice].descricao);
       printf("Categoria: %s\n", tarefas[indice].categoria);
-      printf("Categoria: %s\n", tarefas[indice].estado);
+      printf("Estado: %s\n", tarefas[indice].estado);
       printf("-------------------\n");
     }
 
@@ -148,7 +150,7 @@ void editarTarefa(Tarefa *tarefa,int numTarefas, int indice){
     printf("Edite o novo estado da tarefa: completo, em andamento,nao iniciado: \n");
     getchar(); //limpa o buffer do teclado
     fgets(tarefa[indice].estado,sizeof(tarefa[indice].estado),stdin);
-    tarefa[indice].estado[strcmp(tarefa[indice].estado,"\n")] = '\0';
+    tarefa[indice].estado[strcspn(tarefa[indice].estado,"\n")] = '\0';
     printf("Estado da tarefa alterado com sucesso!\n");
   } else {
     printf("Indice inválido\n");
@@ -167,9 +169,9 @@ void prioridade(const Tarefa *tarefa,int numTarefa, int prioridade){
   for(int i = 0; i < numTarefa; i++){
     if(tarefa[i].prioridade == prioridade){
       printf("Prioridade: %d\n", tarefa[i].prioridade);
-      printf("Prioridade: %s\n", tarefa[i].descricao);
-      printf("Prioridade: %s\n", tarefa[i].categoria);
-      printf("Prioridade: %s\n", tarefa[i].estado);
+      printf("Descricao: %s\n", tarefa[i].descricao);
+      printf("Categoria: %s\n", tarefa[i].categoria);
+      printf("Estado: %s\n", tarefa[i].estado);
       printf("---------------------------\n");
       achadas++;
       
@@ -179,6 +181,33 @@ void prioridade(const Tarefa *tarefa,int numTarefa, int prioridade){
   if(achadas == 0){
     printf("Nenhuma tarefa encontrada com prioridade %d.\n",prioridade);
   }
+}
+
+
+/*função filtrar por estado*/
+void estado(const Tarefa * tarefa, int numTarefa,const char *estado){
+  int  achadas = 0;
+  printf("Tarefa com estado %s: \n",estado);
+
+  for(int i = 0; i < numTarefa; i++){
+   
+    if(strcmp(tarefa[i].estado,estado) == 0){
+      printf("Prioridade: %d\n", tarefa[i].prioridade);
+      printf("Descricao: %s\n", tarefa[i].descricao);
+      printf("Categoria: %s\n", tarefa[i].categoria);
+      printf("Estado: %s\n", tarefa[i].estado);
+      printf("---------------------------\n");
+      achadas++;
+
+      
+    }
+  }
+
+  if (achadas == 0){
+    printf("Nenhuma tarefa encontrada com o estado %s.\n",estado);
+  }
+
+  
 }
 
 
