@@ -79,6 +79,15 @@ int main() {
           festado[strcspn(festado,"\n")] = '\0'; // remove os caracteres da nova linha
           estado(pessoaTarefa,numLidas,festado);
           break;
+          case 7:
+          printf("Listar por categoria: \n");
+          char Fcategoria[50];
+          printf("Digite a categoria que deseja ser listada: ");
+          getchar();
+          fgets(Fcategoria, sizeof(Fcategoria),stdin);
+          Fcategoria[strcspn(Fcategoria, "\n")] = '\0';
+          categoria(pessoaTarefa,numLidas,Fcategoria);
+          break;
 
           case 0:
 
