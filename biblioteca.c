@@ -211,6 +211,47 @@ void estado(const Tarefa * tarefa, int numTarefa,const char *estado){
 }
 
 
+void categoria(const Tarefa *tarefa, int numTarefa,const char *categoria){
+  Tarefa tarefaF[100]; 
+  int encontrada = 0;
+
+  // filtrando pela categoria desejada
+  for(int i = 0; i < numTarefa; i++){
+    if(strcmp(tarefa[i].categoria,categoria) == 0){
+      tarefaF[encontrada++] = tarefa[i];
+    }
+  }
+// ordenando as tarefas filtradas pela prioridade de forma de crescente
+  for(int i = 0; i < encontrada - 1; i++){
+    for(int j = 0; j < encontrada - i -1; j++){
+      if(tarefaF[j].prioridade > tarefaF[j + 1].prioridade){
+        //troca as tarefas de posicao
+        Tarefa temp = tarefaF[j];
+        tarefaF[j] = tarefaF[j + 1];
+      tarefaF[j + 1] = temp;
+        }
+    }
+  }
+
+  // imprime as tarefas filtradas e ordenadas
+  printf("Tarefas na categoria %s ordenadas por prioridades em ordem crescente:\n",categoria);
+  for (int i = 0; i < encontrada; i++){
+    printf("Prioridade: %d\n",tarefaF[i].prioridade);
+    printf("Descricao: %s\n",tarefaF[i].descricao);
+    printf("Categoria: %s\n",tarefaF[i].categoria);
+    printf("Estado: %s\n",tarefaF[i].estado);
+    printf("----------------------\n");
+    
+  }
+
+  if(encontrada == 0){
+    printf("Nenhuma tarefa encontrada na categoria %s\n",categoria);
+  }
+
+  
+}
+
+
 
 
 
