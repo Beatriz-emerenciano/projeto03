@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "biblioteca.h"
+#include "string.h"
 
 Tarefa tarefasLidas[100];
 int numLidas = 0;
@@ -66,6 +67,17 @@ int main() {
           printf("Digite a listagem das prioridades desejada: ");
           scanf("%d", &fPrioridade);
           prioridade(pessoaTarefa,numLidas,fPrioridade);
+          break;
+
+          case 6:
+          printf("Listar por estado:\n");
+            carregarArquivo(pessoaTarefa,&numLidas);
+          char festado[20];
+          printf("Digite o estado que deseja ser listado:");
+          getchar();//limpar o buffer do teclado
+          fgets(festado,sizeof(festado),stdin);
+          festado[strcspn(festado,"\n")] = '\0'; // remove os caracteres da nova linha
+          estado(pessoaTarefa,numLidas,festado);
           break;
 
           case 0:

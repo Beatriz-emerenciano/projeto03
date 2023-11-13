@@ -26,6 +26,7 @@ void salvarArquivo(const Tarefa *tarefas,int numTarefas);
 int carregarArquivo(Tarefa *tarefas,int *numTarefas);
 void editarTarefa(Tarefa *tarefa,int numTarefas, int indice);
 void prioridade(const Tarefa *tarefa,int numTarefa, int prioridade);
+void estado(const Tarefa * tarefa, int numTarefa,const char *estado);
 
 extern Tarefa tarefaLidas[100];
 extern int numLidas;
