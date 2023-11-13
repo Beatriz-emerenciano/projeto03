@@ -28,6 +28,7 @@ void editarTarefa(Tarefa *tarefa,int numTarefas, int indice);
 void prioridade(const Tarefa *tarefa,int numTarefa, int prioridade);
 void estado(const Tarefa * tarefa, int numTarefa,const char *estado);
 void categoria(const Tarefa *tarefa, int numTarefa,const char *categoria);
+void categoriaEprioridade(const Tarefa *tarefa,int numTarefa, int prioridade, const char *categoria);
 
 extern Tarefa tarefaLidas[100];
 extern int numLidas;

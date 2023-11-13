@@ -17,6 +17,9 @@ void menu() {
   printf("4- Editar tarefa\n");
   printf("5- filtrar por prioridade\n");
   printf("6- filtrar por estado\n");
+  printf("7- filtrar por categoria\n");
+  printf("8- filtrar por prioridade e categoria \n");
+  
   printf("0- Sair\n");
   printf("Digite:\n ");
 }
@@ -143,7 +146,7 @@ int carregarArquivo(Tarefa *tarefas, int *numTarefas) {
   }
 }
 
-  /* a função editar usa o fgets para ler a ova string de estado e remove caracteres de nova linha para evitar problema de formatação*/
+  /* a função editar usa o fgets para ler a  string de estado e remove caracteres de nova linha para evitar problema de formatação*/
 
 void editarTarefa(Tarefa *tarefa,int numTarefas, int indice){
   if (indice >= 0 && indice  < numTarefas){
@@ -160,7 +163,7 @@ void editarTarefa(Tarefa *tarefa,int numTarefas, int indice){
 }
 
 
-/* a função*/
+/*  a função prioridade como todas as outras recebe paramentros, há um loop para iterar sobre todas as tarefas do array, verifica se a prioridade da tarefa na posicao atual é igual a prioridade desejada, se a condição for verdadeira ele imprime as informaçoes, e incrementa a variavel achadas sempre que uma tarefa é encontrada*/
 
 void prioridade(const Tarefa *tarefa,int numTarefa, int prioridade){
   int achadas = 0;
@@ -184,7 +187,7 @@ void prioridade(const Tarefa *tarefa,int numTarefa, int prioridade){
 }
 
 
-/*função filtrar por estado*/
+/*função estado , há um loop para iterar sobre o array, verifica se o estado da tarefa na posicao atual é igual ao estado desejado usando a função strcmp para comparar strings, se a condição for verdadeira exibe as informaçoes ao usuario*/
 void estado(const Tarefa * tarefa, int numTarefa,const char *estado){
   int  achadas = 0;
   printf("Tarefa com estado %s: \n",estado);
@@ -210,6 +213,7 @@ void estado(const Tarefa * tarefa, int numTarefa,const char *estado){
   
 }
 
+/*há um for para iterar sobre todas as tarefas no array, verifica se a categoria da tarefa na posicao atual é igual a categoria desejada usando o strcmp para comparar strings, se a condição for verdadeira imprime as informacoes, também é incrementada a variavel encontrada sempre que uma tarefa é encontrada */
 
 void categoria(const Tarefa *tarefa, int numTarefa,const char *categoria){
   Tarefa tarefaF[100]; 
@@ -252,7 +256,28 @@ void categoria(const Tarefa *tarefa, int numTarefa,const char *categoria){
 }
 
 
+/* essa função tem como objetivo encontrar e imprimir as tarefas que correspondam a prioridade e categoria especificada, há um looping que itera sobre as tarefas e comprara a prioridade e categoria, se amobos valores corresponderem é imprimido os dados */
 
+void categoriaEprioridade(const Tarefa *tarefa,int numTarefa, int prioridade, const char *categoria){
+  int achadas = 0;
+  printf("Tarefas com prioridades %d e categoria %s: \n", prioridade,categoria);
+  for(int j = 0; j < numTarefa; j ++){
+    if(tarefa[j].prioridade == prioridade && strcmp(tarefa[j].categoria,categoria) == 0){
+      printf("Prioridade: %d\n",tarefa[j].prioridade);
+      printf("Descricao: %s\n",tarefa[j].descricao);
+      printf("Categoria: %s\n",tarefa[j].categoria);
+      printf("Estado: %s\n",tarefa[j].estado);
+      printf("-------------------------\n");
+      achadas++;
+      
+    }
+  }
+
+  if(achadas == 0){
+    printf("Nenhuma tarefa encontrada com prioridade %d e categoria %s \n",prioridade,categoria);
+  }
+  
+}
 
 
 
