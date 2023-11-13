@@ -89,6 +89,22 @@ int main() {
           categoria(pessoaTarefa,numLidas,Fcategoria);
           break;
 
+          case 8:
+          printf("Listar por prioridade e categoria: \n");
+             carregarArquivo(pessoaTarefa,&numLidas);
+          int Fprioridade;
+          printf("Digite a prioridade desejada: ");
+          scanf("%d", &Fprioridade);
+
+          char Fcateg[20];
+          printf("Digite a categoria desejada: ");
+          getchar();
+          fgets(Fcateg,sizeof(Fcateg),stdin);
+          Fcateg[strcspn(Fcateg, "\n")] = '0'; 
+          categoriaEprioridade(pessoaTarefa,numLidas,Fprioridade,Fcateg);
+          break;
+          
+
           case 0:
 
           printf("Programa encerrado!\n");
